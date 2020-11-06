@@ -1,7 +1,7 @@
 require "nokogiri"
 require "open-uri"
 
-
+Ingredient.destroy_all
 # Scrapping extraits cosmétiques AZ
 file1 = "db/extraits_naturels.html"
 doc_ext= Nokogiri::HTML(open(file1))
@@ -33,3 +33,11 @@ ingredients.each do |ingredient|
   puts "Next"
 end
 
+# Création des catégories
+Category.destroy_all
+
+puts "Destroy categories"
+cosmétiques = Category.create!(name: "Cosmétiques")
+entretien_maison = Category.create!(name: "Entretien maison")
+santé = Category.create!(name: "Santé et bien-être")
+puts "categories created"
