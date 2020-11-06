@@ -40,5 +40,20 @@ puts "Destroy categories"
 cosmétiques = Category.create!(name: "Cosmétiques")
 entretien_maison = Category.create!(name: "Entretien maison")
 santé = Category.create!(name: "Santé et bien-être")
-puts "categories created"
+puts "Categories created"
 
+# Création des units
+Unit.destroy_all
+
+puts "Destroy units"
+g = Unit.create!(name: "g")
+mg = Unit.create!(name: "mg")
+kg = Unit.create!(name: "kg")
+l = Unit.create!(name: "l")
+ml = Unit.create!(name: "ml")
+cl = Unit.create!(name: "cl")
+dl = Unit.create!(name: "dl")
+cac = Unit.create!(name: "cuill. à café")
+cas = Unit.create!(name: "cuill. à soupe")
+goutte = Unit.create!(name: "goutte")
+puts "Units created"
