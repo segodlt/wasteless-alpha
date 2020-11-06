@@ -41,3 +41,4 @@ cosmétiques = Category.create!(name: "Cosmétiques")
 entretien_maison = Category.create!(name: "Entretien maison")
 santé = Category.create!(name: "Santé et bien-être")
 puts "categories created"
+
