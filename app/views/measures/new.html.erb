@@ -1,0 +1,9 @@
+<h2> Ajouter un ingrédient à <%= @recipe.title %> </h2>
+
+<%= simple_form_for [@recipe, @measure] do |f|%>
+  <%= f.association :ingredient, label: "Ingrédient" collection: Ingredient.order('name ASC') %>
+  <%# ajouter les units et les alertes  %>
+  <%= f.input :quantity, label: "Quantité" %>
+  <%= f.input :required, label: "Facultatif?", :input_html => { :checked => false } %>
+  <%= f.submit %>
+<% end %>
