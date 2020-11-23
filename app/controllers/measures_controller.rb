@@ -35,7 +35,7 @@ class MeasuresController < ApplicationController
   private
 
   def measure_params
-    params.require(:measure).permit(:id, :quantity, :listed, :optionnal, :ingredient_id)
+    params.require(:measure).permit(:id, :quantity, :recipe_id, :unit_id, :optionnal, :ingredient_id)
   end
 
   def display_recipe
