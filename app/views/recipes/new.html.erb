@@ -18,14 +18,14 @@
   <%= f.simple_fields_for :measures do |m| %>
     <%= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all %>
     <%= m.input :quantity, label:"Quantité", placeholder: "50" %>
-    <%= m.input :unit, label:"Unité", placeholder: "mg", collection: Unit.all %>
-    <%= m.input :optionnal, id: "check", label: "Facultatif" %>
-    <%= f.submit %>
+    <%= m.input :unit_id, label:"Unité", placeholder: "mg", collection: Unit.all %>
+    <%= m.input :optionnal,label: "Facultatif?", as: :boolean, boolean_style: :inline %>
+    <%= f.submit "ajouter un ingrédient" %>
   <% end %>
 
 
 
-  <!-- reste à faire : difficulty, time -->
+  <!-- reste à faire : difficulty, time, js pour choix des catégories, ajout d'ingrédient, visualisation des ingrédients, photo, prévisualisation -->
 
   <%= f.submit %>
 <% end %>
