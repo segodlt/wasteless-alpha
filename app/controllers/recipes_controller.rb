@@ -1,16 +1,14 @@
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
+
   def index
    @recipes = policy_scope(Recipe).where(user_id:current_user)
   end
 
   def show
     @recipe = Recipe.find(params[:id])
-    @favorite = @recipe.favorites.where(user_id:current_user.id).first if user_signed_in?
     authorize @recipe
-
-    # @review = Review.new if user_signed_in?
   end
 
   def new
@@ -22,8 +20,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
     authorize @recipe
+    #raise
     if @recipe.save
-      redirect_to recipe_path(@recipe)
+      redirect_to create_recipe_sb_path
     else
       render :new
     end
@@ -37,6 +36,9 @@ class RecipesController < ApplicationController
 private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :category_id, :measures, :usage, photos: [], measures_attributes: [:id, :quantity, :recipe_id, :unit_id, :optionnal, :ingredient_id])
+    params.require(:recipe).permit(:title, :description, :category_id, :usage)
   end
+
+  # , photos: [], measures_attributes: [:id, :quantity, :recipe_id, :unit_id, :optionnal, :ingredient_id]
+
 end

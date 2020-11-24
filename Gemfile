@@ -37,6 +37,9 @@ gem 'pundit'
 # rails admin
 gem 'rails_admin', '~> 2.0'
 
+# step-by-step forms gem
+gem 'wicked'
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'

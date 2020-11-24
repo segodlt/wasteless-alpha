@@ -1,29 +1,25 @@
 <h2>nouvelle recette</h2>
 
-<%= simple_form_for(@recipe) do |f| %>
+
   <!-- lister les catégories à sélectionner -->
-  <% Category.all.each do |category| %>
-    <%= category.name %>
-  <% end %>
+  <div class="form-group">
+    <label class="control-label radio_buttons optional">Catégories</label>
+      <% Category.all.each do |category| %>
+        <input type="radio" value="<%= category.id %>" id="recipe_category_id_<%= category.id %>">
+        <label for="recipe_category_id_<%= category.id %>">
+          <%= category.name %>
+        </label>
+      <% end %>
+  </div>
 
   <!-- titre, description, utilisation -->
+<%= simple_form_for(@recipe) do |f| %>
   <%= f.label :title, "Titre" %>
   <%= f.text_field :title, class: "form-control" %>
   <%= f.label :description, "Description" %>
   <%= f.text_area :description, class: "form-control" %>
   <%= f.label :usage, "Utilisation" %>
   <%= f.text_area :usage, class: "form-control" %>
-
-  <!-- ingrédient, quantité, unité, facultatif -->
-  <%= f.simple_fields_for :measures do |m| %>
-    <%= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all %>
-    <%= m.input :quantity, label:"Quantité", placeholder: "50" %>
-    <%= m.input :unit_id, label:"Unité", placeholder: "mg", collection: Unit.all %>
-    <%= m.input :optionnal,label: "Facultatif?", as: :boolean, boolean_style: :inline %>
-    <%= f.submit "ajouter un ingrédient" %>
-  <% end %>
-
-
 
   <!-- reste à faire : difficulty, time, js pour choix des catégories, ajout d'ingrédient, visualisation des ingrédients, photo, prévisualisation -->
 
