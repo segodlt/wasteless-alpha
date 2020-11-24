@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   resources :ingredients, only: [:index, :show]
+  resources :create_recipe_sbs
 
 end
