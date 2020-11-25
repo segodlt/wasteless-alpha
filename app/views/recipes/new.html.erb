@@ -1,7 +1,12 @@
 <h2>nouvelle recette</h2>
 
 
-  <!-- lister les catégories à sélectionner -->
+
+
+  <!-- titre, description, utilisation -->
+<%= simple_form_for(@recipe) do |f| %>
+
+<!-- lister les catégories à sélectionner -->
   <div class="form-group">
     <label class="control-label radio_buttons optional">Catégories</label>
       <% Category.all.each do |category| %>
@@ -12,8 +17,6 @@
       <% end %>
   </div>
 
-  <!-- titre, description, utilisation -->
-<%= simple_form_for(@recipe) do |f| %>
   <%= f.label :title, "Titre" %>
   <%= f.text_field :title, class: "form-control" %>
   <%= f.label :description, "Description" %>
