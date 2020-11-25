@@ -1,0 +1,7 @@
+<h2>nouvel ingredient</h2>
+
+<%= form_for(@recipe, :url => wizard_path, :method => :put) do|f| %>
+  <%= f.text_area :ingredients, label: "test" %>
+<% end %>
+
+<%= link_to "skip", next_wizard_path %>
