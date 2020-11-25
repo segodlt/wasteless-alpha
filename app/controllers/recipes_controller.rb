@@ -1,19 +1,23 @@
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
+  include Wicked::Wizard
 
+  steps :add_ingredient, :add_details
 
   def index
    @recipes = policy_scope(Recipe).where(user_id:current_user)
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
     authorize @recipe
+    render_wizard
   end
 
   def new
     @recipe = Recipe.new
     authorize @recipe
+    render_wizard
   end
 
   def create
@@ -21,11 +25,18 @@ class RecipesController < ApplicationController
     @recipe.user = current_user
     authorize @recipe
     if @recipe.save
-      # redirect_to create_recipe_sb_path
-      redirect_to recipes_path
+      redirect_to wizard_path(steps.first, recipe_id: @recipe.id)
     else
       render :new
     end
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.user = current_user
+    authorize @recipe
+    @recipe.update_attributes(params[:recipe_params])
+    render_wizard @recipe
   end
 
   def edit
