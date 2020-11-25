@@ -1,3 +1,5 @@
 <h2> index des recettes </h2>
 
-<%= @recipes.all %>
+<% @recipes.all.each do |recipe| %>
+  <%= recipe.title %>
+<% end %>

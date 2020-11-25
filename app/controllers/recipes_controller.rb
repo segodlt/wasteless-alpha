@@ -20,9 +20,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
     authorize @recipe
-    #raise
     if @recipe.save
-      redirect_to create_recipe_sb_path
+      # redirect_to create_recipe_sb_path
+      redirect_to recipes_path
     else
       render :new
     end
