@@ -6,6 +6,6 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :measures
   accepts_nested_attributes_for :measures
 
-  validates :title, :description, presence: true
+  #validates :title, :description, presence: true
 
 end
