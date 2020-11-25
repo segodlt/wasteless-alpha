@@ -2,18 +2,19 @@
 
 
   <!-- lister les catégories à sélectionner -->
-  <div class="form-group">
-    <label class="control-label radio_buttons optional">Catégories</label>
-      <% Category.all.each do |category| %>
-        <input type="radio" value="<%= category.id %>" id="recipe_category_id_<%= category.id %>">
-        <label for="recipe_category_id_<%= category.id %>">
-          <%= category.name %>
-        </label>
-      <% end %>
-  </div>
+
 
   <!-- titre, description, utilisation -->
 <%= simple_form_for(@recipe) do |f| %>
+  <div class="form-group">
+     <label class="control-label radio_buttons optional">Catégories</label>
+       <% Category.all.each do |category| %>
+         <input type="radio" value="<%= category.id %>" name="recipe[category_id]" id="recipe_category_id_<%= category.id %>">
+         <label for="recipe_category_id_<%= category.id %>">
+           <%= category.name %>
+       <% end %>
+    </label>
+  </div>
   <%= f.label :title, "Titre" %>
   <%= f.text_field :title, class: "form-control" %>
   <%= f.label :description, "Description" %>
