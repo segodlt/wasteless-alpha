@@ -1,0 +1,15 @@
+<div class="home">
+  <div class="form-inline">
+    <%= form_tag root_path, style: "width: 90%", method: :get do %>
+      <div class="research">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Trouvez votre recette !"
+         %>
+        <%= submit_tag "Search", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
