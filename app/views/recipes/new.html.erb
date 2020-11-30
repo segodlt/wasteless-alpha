@@ -1,5 +1,6 @@
 <h2>nouvelle recette</h2>
 
+
   <!-- lister les catégories à sélectionner -->
 
 
@@ -16,14 +17,19 @@
   </div>
   <%= f.label :title, "Titre" %>
   <%= f.text_field :title, class: "form-control" %>
-  <%= f.label :description, "Description" %>
-  <%= f.text_area :description, class: "form-control" %>
-  <%= f.label :usage, "Utilisation" %>
-  <%= f.text_area :usage, class: "form-control" %>
 
-  <!-- reste à faire : difficulty, time, js pour choix des catégories, ajout d'ingrédient, visualisation des ingrédients, photo, prévisualisation -->
+  <!-- ajout des ingrédients -->
+  <!-- a faire : ajouter le bouton d'ajout d'ingrédient -->
+  <div class="new-measure-form">
+    <%= f.simple_fields_for :measures do |m| %>
+        <%= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all %>
+        <%= m.input :quantity, label:"Quantité", placeholder: "50" %>
+        <%= m.input :unit_id, label: "Unité", placeholder: "g", collection: Unit.all %>
+    <% end %>
+  </div>
+
+  <!-- afficher les ingrédients -->
+
 
   <%= f.submit %>
 <% end %>
-
-<%= link_to 'skip', next_wizard_path %>
