@@ -1,0 +1,14 @@
+<h2>nouvel ingredient</h2>
+
+<%= simple_form_for @recipe, method: :put, url: wizard_path do|f| %>
+  <%# if params[:action] == 'update' %>
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description, class: "form-control" %>
+  <%= f.label :usage, "Utilisation" %>
+  <%= f.text_area :usage, class: "form-control" %>
+  <%# end %>
+  <%= f.submit "Valider", class: "btn-blue" %>
+
+<% end %>
+
+<%= link_to "skip", next_wizard_path %>

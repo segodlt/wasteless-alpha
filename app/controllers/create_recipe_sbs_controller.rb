@@ -1,22 +1,36 @@
 class CreateRecipeSbsController < ApplicationController
   include Wicked::Wizard
 
-  steps :addIngredient, :addDetails
+  steps :addDescription, :addDetails
 
   def show
-    @user = current_user
     @recipe = Recipe.find(params[:recipe_id])
+    @recipe.user = current_user
+    authorize @recipe
+
     render_wizard
   end
 
-private
 
-  def create_recipe_sbs_params
-    params.require(:recipe).permit(:title, :description, :category_id, :usage)
+  def update
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe.user = current_user
+    authorize @recipe
+    #raise
+    @recipe.update_attributes(create_recipe_sbs_params)
+    render_wizard @recipe
   end
 
-  # , photos: [], measures_attributes: [:id, :quantity, :recipe_id, :unit_id, :optionnal, :ingredient_id]
 
-end
+private
+  def create_recipe_sbs_params(step)
+    permitted_attributes = case step
+      when "addDescription"
+        [:description, :usage]
+      when "addDetails"
+        [:difficulty, :duration, photos: []]
+      params.require(:create_recipe_sbs).permit(permitted_attributes).merge(form_step: step)
+    end
+  end
 
 end

@@ -40,6 +40,9 @@ gem 'rails_admin', '~> 2.0'
 # step-by-step forms gem
 gem 'wicked'
 
+# formulaires simple_form
+gem 'simple_form'
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
