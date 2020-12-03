@@ -1,1 +1,12 @@
-addDetails.html.erb
+<h2>nouvel ingredient</h2>
+
+<%= simple_form_for @recipe, method: :put, url: wizard_path do|f| %>
+  <%# if params[:action] == 'update' %>
+  <%= f.label :difficulty, "Difficulté" %>
+  <%= f.text_area :difficulty, class: "form-control" %>
+  <%= f.label :duration, "Temps de préparation" %>
+  <%= f.text_area :duration, class: "form-control" %>
+  <%# end %>
+  <%= f.submit "Valider", class: "btn-blue" %>
+
+<% end %>
