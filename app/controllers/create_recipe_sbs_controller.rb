@@ -16,8 +16,10 @@ class CreateRecipeSbsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @recipe.user = current_user
     authorize @recipe
-    #raise
+    params[:recipe][:status] = 'active' if step == steps.last
     @recipe.update_attributes(create_recipe_sbs_params)
+    #raise
+    #@recipe.update_attributes(create_recipe_sbs_params)
     render_wizard @recipe
   end
 
