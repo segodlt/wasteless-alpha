@@ -18,21 +18,13 @@ class CreateRecipeSbsController < ApplicationController
     authorize @recipe
     params[:recipe][:status] = 'active' if step == steps.last
     @recipe.update_attributes(create_recipe_sbs_params)
-    #raise
-    #@recipe.update_attributes(create_recipe_sbs_params)
     render_wizard @recipe
   end
 
 
 private
-  def create_recipe_sbs_params(step)
-    permitted_attributes = case step
-      when "addDescription"
-        [:description, :usage]
-      when "addDetails"
-        [:difficulty, :duration, photos: []]
-      params.require(:create_recipe_sbs).permit(permitted_attributes).merge(form_step: step)
-    end
-  end
+  def create_recipe_sbs_params
+    params.require(:recipe).permit(:description, :usage, :difficulty, :duration, photos: [])
 
+  end
 end
