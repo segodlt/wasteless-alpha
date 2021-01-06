@@ -1,10 +1,7 @@
 <h2>nouvelle recette</h2>
 
 
-  <!-- lister les catégories à sélectionner -->
-
-
-  <!-- titre, description, utilisation -->
+  <!-- Catégories, choix des ingrédients, affichage des ingrédients -->
 <%= simple_form_for(@recipe) do |f| %>
   <div class="form-group">
      <label class="control-label radio_buttons optional">Catégories</label>
@@ -17,21 +14,25 @@
   </div>
   <%= f.label :title, "Titre" %>
   <%= f.text_field :title, class: "form-control" %>
-  <%#= f.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all %>
+
 
   <!-- ajout des ingrédients -->
-  <!-- a faire : ajouter le bouton d'ajout d'ingrédient -->
+
   <div class="new-measure-form">
     <%= f.simple_fields_for :measures do |m| %>
-        <%= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all %>
-        <%= m.input :quantity, label:"Quantité", placeholder: "50" %>
-        <%= m.input :unit_id, label: "Unité", placeholder: "g", collection: Unit.all %>
+        <%= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all, input_html: { class: 'ingredient_id' }  %>
+        <%= m.input :quantity, label:"Quantité", placeholder: "50", input_html: { class: 'ingredient_quantity' } %>
+        <%= m.input :unit_id, label: "Unité", placeholder: "g", collection: Unit.all, input_html: { class: 'ingredient_unit' } %>
     <% end %>
-    <%= f.submit "ajouter", class: "add-ingredient-btn" %>
+    <div id="add-ingredient-btn", class=btn>
+      <!-- ajouter une fonction de rester sur la page tant que pas cliqué sur valider - voir avec le satut? -->
+      <%= "ajouter" %>
+    </div>
   </div>
 
   <!-- afficher les ingrédients -->
 
+   <ul id="recipe-ingredients-list"></ul>
 
-  <%= f.submit %>
+  <%= f.submit label = "valider" %>
 <% end %>
