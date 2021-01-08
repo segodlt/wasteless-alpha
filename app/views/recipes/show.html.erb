@@ -1,0 +1,5 @@
+<%= @recipe.title %>
+<% @recipe.measures.each do |measure| %>
+  <%= measure.ingredient.name %>
+
+<% end %>

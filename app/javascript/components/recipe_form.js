@@ -12,7 +12,6 @@ const addIngredient = () => {
     const list = document.getElementById('recipe-ingredients-list');
     const newIngredient = `<li>${ingredientQuantity} ${ingredientUnit} - ${ingredientName}</li>`
     list.insertAdjacentHTML("beforeend", newIngredient);
-    // recommencer jusqu'à click "valider"
 
   });
 };

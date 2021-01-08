@@ -9,7 +9,9 @@ class MeasuresController < ApplicationController
   def create
     @measure = Measure.new(measure_params)
     @measure.recipe = @recipe
+    @recipe.measures.build
     authorize @measure
+    #raise
     if @measure.save
       redirect_to recipe_path(@recipe)
     else
