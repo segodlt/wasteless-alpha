@@ -1,5 +1,5 @@
 <h2> index des recettes </h2>
 
 <% @recipes.all.each do |recipe| %>
-  <%= recipe.title %>
+  <%= link_to "recipe", recipe_path(recipe) %>
 <% end %>

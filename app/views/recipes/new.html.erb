@@ -23,6 +23,7 @@
         <%= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all, input_html: { class: 'ingredient_id' }  %>
         <%= m.input :quantity, label:"Quantité", placeholder: "50", input_html: { class: 'ingredient_quantity' } %>
         <%= m.input :unit_id, label: "Unité", placeholder: "g", collection: Unit.all, input_html: { class: 'ingredient_unit' } %>
+        <%= m.input :optionnal, label: "Facultatif?", :input_html => { :checked => false } %>
     <% end %>
     <div id="add-ingredient-btn", class=btn>
       <!-- ajouter une fonction de rester sur la page tant que pas cliqué sur valider - voir avec le satut? -->
