@@ -43,6 +43,9 @@ gem 'wicked'
 # formulaires simple_form
 gem 'simple_form'
 
+# dotenv
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'

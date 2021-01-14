@@ -1,20 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WastelessAlpha</title>
+    <title>Wasteless - Recherchez et partagez vos recettes de produits ménagers et bien-être faits maison !</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
   </head>
 
-  <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+    <body>
+      <div class="content-wrapper <%=params[:controller] %>-<%= params[:action] %>">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="dropdown" id="avatar-home">
+                <%#= link_to "javascript:history.back()" do %>
+                <%= link_to root_path do %>
+                  <i class="fas fa-chevron-left"></i>
+                <% end %>
+                <%= image_tag "logo-wasteless.png", alt: "logo", class:"logo-wasteless" %>
+                <% if user_signed_in? %>
+                  <% if current_user.photo.attached?  %>
+                    <%= cl_image_tag current_user.photo.key, width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} if current_user.photo.attached? %>
+                    <div class="dropdown-menu dropdown-menu-right back-color" aria-labelledby="navbarDropdown">
+                      <%= link_to "Mon compte", account_path, class:"dropdown-item white-menu"%>
+                      <%= link_to "Contactez-nous", "#", class:"dropdown-item white-menu"%>
+                      <%= link_to "Mentions légales", "#", class:"dropdown-item white-menu"%>
+                      <%= link_to "Se déconnecter", destroy_user_session_path, class:"dropdown-item white-menu"%>
+                    </div>
+                    <% else %>
+                      <%= cl_image_tag "https://res.cloudinary.com/dhf497t6o/image/upload/v1599036991/avatar-gris_jdsrdo.png", width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} %>
+                      <div class="dropdown-menu dropdown-menu-right back-color" aria-labelledby="navbarDropdown">
+                        <%= link_to "Mon compte", account_path, class:"dropdown-item white-menu"%>
+                        <%= link_to "Contactez-nous", "#", class:"dropdown-item white-menu"%>
+                        <%= link_to "Mentions légales", "#", class:"dropdown-item white-menu"%>
+                        <%= link_to "Se déconnecter", destroy_user_session_path, class:"dropdown-item white-menu"%>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to new_user_session_path do %>
+                      <i class="fas fa-sign-in-alt connect"></i>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <%= yield %>
+        <%= yield %>
+        <% if notice %>
+          <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+            <span><%= notice %></span>
+            <a data-dismiss="alert" aria-label="Close" class="cross">
+              <i class="fas fa-times"></i>
+            </a>
+          </div>
+        <% end %>
+        <p class="alert"><%= alert %></p>
+      </div>
+      <%= render 'shared/navbar' %>
   </body>
 </html>
