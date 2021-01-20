@@ -1,0 +1,23 @@
+.btn-flat {
+  color: white !important;
+  padding: 3px 5px;
+  margin-top: 20px;
+  letter-spacing: -1px;
+  display: block;
+  border-radius: 4px;
+  background: rgba(185, 185, 185, 1.000);
+  transition: background 0.3s ease;
+  opacity: 0.8;
+  text-decoration: none !important;
+}
+
+.btn-flat.active {
+  background: var(--wnude);
+  color: white;
+  opacity: 1;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-evenly;
+}
