@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :measures
   has_many :units, through: :measures
   accepts_nested_attributes_for :measures
+  has_many_attached :photos, dependent: :destroy
 
   validates :title, :description, :usage, presence: true, if: :active?
   validates_associated :ingredients, :measures, presence: true, if: :active?

@@ -1,6 +1,36 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div id="redirect-recipe-js"></div>
 
-<div class="search_home_container">
-      <%= render 'shared/search' %>
+<div class="home">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dhf497t6o/image/upload/v1599135248/handmade-charcoal-soap_lquihp.jpg);" >
+    <h1><strong>Bienvenue sur Wasteless</strong></h1>
+    <p>Recherchez et partagez vos recettes de produits ménagers et bien-être faits maison !</p>
+
+    <div class="form-inline">
+      <%= form_tag root_path, style: "width: 90%", method: :get do %>
+        <div class="research">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Trouvez votre recette !"
+          %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<ul class="filter" style="list-style-type: none;">
+  <% @categories.each do |category| %>
+    <li><%= link_to category.name, root_path(category_id:category.id, query:params[:query]), class: "btn-flat #{"active" if params[:category_id] == category.id.to_s}" %></li>
+  <% end %>
+</ul>
+
+<div class="results">
+  <% if params[:query].present? %>
+    <p><%= @recipes.size > 1 ? "#{@recipes.size} résultats" : "#{@recipes.size} résultat" %> </p>
+  <% elsif params[:category_id].present? %>
+    <p>Nos recettes <%= @category.name.downcase %> </p>
+  <% else %>
+    <p>Nos dernières recettes</p>
+  <% end %>
 </div>
