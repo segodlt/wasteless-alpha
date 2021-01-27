@@ -1,0 +1,148 @@
+.recipe_show {
+  margin: 10px;
+  padding: 0px;
+}
+
+.recipe_show h2 {
+  font-family: 'Grandstander', cursive;    font-weight: bold;
+  font-size: 1.7em;
+  color: var(--wgreen);
+  text-align: center;
+  border-bottom: solid 1px powderblue;
+  padding-bottom: 20px;
+
+}
+
+.recipe_show img {
+  min-height: 50%;
+  height: 250px;
+  width: 100%;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 15px;
+  object-fit: cover;
+
+}
+
+#measures_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px lightgray;
+}
+
+.ingredient-list {
+  font-size: 1rem;
+  margin-bottom: 0px;
+}
+
+#description {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+}
+
+.favorite_icon {
+  font-size: 1.7em;
+  background-color: white;
+  border-radius: 50%;
+  margin-top: -30px;
+  margin-left: 40%;
+  padding-top: 10px;
+  position: relative;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+}
+
+.show-icon {
+  color: white;
+  font-size: 1.5em;
+  padding: 5px;
+  width: 50px;
+  background-color: rgba(106, 106, 106, 0.2);
+  border-radius: 5px;
+  text-align: center;
+
+}
+
+.blue-icon {
+  color: var(--wblue);
+  font-size: 1.5em;
+}
+
+
+.recipe-titles {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Grandstander', cursive;    font-weight: bold;
+  font-size: 1.3em;
+  margin: 0px;
+  }
+
+.recipe-icons-block {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  position: relative;
+  margin-bottom: -50px;
+  z-index: 2;
+  padding-left: 20px;
+  padding-right:20px;
+}
+
+.recipe-body {
+  min-width: 100%;
+  margin-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-top: solid 1px white;
+  box-shadow: 0px 0px 6px lightgray;
+  border-radius: 20px;
+  background-color: white;
+
+}
+
+.fa-info-circle {
+  color: lightgray;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1.5em;
+}
+
+.username {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-size: 0.9rem;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+#sweet-alert-demo {
+  padding: 0px;
+}
+
+.more-icon-class {
+  display:flex;
+  justify-content: space-between;
+}
+
+.small-btn {
+  width: 50%;
+  font-weight: 600;
+}
+
+
+.italic {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+label abbr {
+  display: none;
+}
